@@ -1,85 +1,107 @@
-# eframe template
+# Oxidize - Task & Todo Manager
 
-[![dependency status](https://deps.rs/repo/github/emilk/eframe_template/status.svg)](https://deps.rs/repo/github/emilk/eframe_template)
-[![Build Status](https://github.com/emilk/eframe_template/workflows/CI/badge.svg)](https://github.com/emilk/eframe_template/actions?workflow=CI)
+[![dependency status](https://deps.rs/repo/github/itsNiccoloSabatini/Oxidize/status.svg)](https://deps.rs/repo/github/itsNiccoloSabatini/Oxidize)
+[![Build Status](https://github.com/itsNiccoloSabatini/Oxidize/workflows/CI/badge.svg)](https://github.com/itsNiccoloSabatini/Oxidize/actions?workflow=CI)
 
-This is a template repo for [eframe](https://github.com/emilk/egui/tree/master/crates/eframe), a framework for writing apps using [egui](https://github.com/emilk/egui/).
+![Oxidize Logo](oxidise_logo_wide.jpg)
 
-The goal is for this to be the simplest way to get started writing a GUI app in Rust.
+## 🚀 Purpose
 
-You can compile your app natively or for the web, and share it using Github Pages.
+**Oxidize** is a fast, efficient, and intuitive task and todo manager built with Rust and egui. Designed for developers and productivity enthusiasts who want a clean, distraction-free way to organize their tasks and boost their workflow.
 
-## Getting started
+## ✨ Key Features
 
-Start by clicking "Use this template" at https://github.com/emilk/eframe_template/ or follow [these instructions](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template).
+- **Lightning Fast**: Built with Rust for maximum performance and minimal resource usage
+- **Cross-Platform**: Runs natively on Windows, macOS, and Linux
+- **Clean Interface**: Modern, minimalist UI powered by egui
+- **Task Organization**: Create, edit, and manage tasks with ease
+- **Priority Levels**: Set task priorities to focus on what matters most
+- **Categories & Tags**: Organize tasks by projects or contexts
+- **Due Dates**: Never miss a deadline with built-in date tracking
+- **Progress Tracking**: Mark tasks as complete and track your productivity
+- **Persistent Storage**: Your tasks are safely stored locally
 
-Change the name of the crate: Choose a good name for your project, and change the name to it in:
-* `Cargo.toml`
-    * Change the `package.name` from `eframe_template` to `your_crate`.
-    * Change the `package.authors`
-* `main.rs`
-    * Change `eframe_template::TemplateApp` to `your_crate::TemplateApp`
-* `index.html`
-    * Change the `<title>eframe template</title>` to `<title>your_crate</title>`. optional.
-* `assets/sw.js`
-  * Change the `'./eframe_template.js'` to `./your_crate.js` (in `filesToCache` array)
-  * Change the `'./eframe_template_bg.wasm'` to `./your_crate_bg.wasm` (in `filesToCache` array)
+## 🎯 Why Oxidize?
 
-Alternatively, you can run `fill_template.sh` which will ask for the needed names and email and perform the above patches for you. This is particularly useful if you clone this repository outside GitHub and hence cannot make use of its
-templating function.
+In a world full of complex productivity apps, Oxidize focuses on simplicity and speed. Whether you're managing daily tasks, project milestones, or personal goals, Oxidize provides the essential features you need without the bloat.
 
-### Learning about egui
+Perfect for:
 
-`src/app.rs` contains a simple example app. This is just to give some inspiration - most of it can be removed if you like.
+- Developers tracking coding tasks and bugs
+- Students managing assignments and deadlines
+- Professionals organizing work projects
+- Anyone who wants a fast, reliable todo manager
 
-The official egui docs are at <https://docs.rs/egui>. If you prefer watching a video introduction, check out <https://www.youtube.com/watch?v=NtUkr_z7l84>. For inspiration, check out the [the egui web demo](https://emilk.github.io/egui/index.html) and follow the links in it to its source code.
+## 🛠️ Tech Stack
 
-### Testing locally
+- **Language**: Rust
+- **GUI Framework**: egui
+- **Build Tool**: Cargo
+- **Web Support**: Available via WebAssembly
 
-`cargo run --release`
+## 🚀 Getting Started
 
-On Linux you need to first run:
+### Prerequisites
 
-`sudo apt-get install libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev libxkbcommon-dev libssl-dev`
+- Rust (latest stable version)
+- Cargo (comes with Rust)
 
-On Fedora Rawhide you need to run:
+### Installation
 
-`dnf install clang clang-devel clang-tools-extra libxkbcommon-devel pkg-config openssl-devel libxcb-devel gtk3-devel atk fontconfig-devel`
+1. Clone the repository:
 
-### Web Locally
+```bash
+git clone https://github.com/itsNiccoloSabatini/Oxidize.git
+cd Oxidize
+```
 
-You can compile your app to [WASM](https://en.wikipedia.org/wiki/WebAssembly) and publish it as a web page.
+2. Build and run:
 
-We use [Trunk](https://trunkrs.dev/) to build for web target.
-1. Install the required target with `rustup target add wasm32-unknown-unknown`.
-2. Install Trunk with `cargo install --locked trunk`.
-3. Run `trunk serve` to build and serve on `http://127.0.0.1:8080`. Trunk will rebuild automatically if you edit the project.
-4. Open `http://127.0.0.1:8080/index.html#dev` in a browser. See the warning below.
+```bash
+cargo run
+```
 
-> `assets/sw.js` script will try to cache our app, and loads the cached version when it cannot connect to server allowing your app to work offline (like PWA).
-> appending `#dev` to `index.html` will skip this caching, allowing us to load the latest builds during development.
+### Web Version
 
-### Web Deploy
-1. Just run `trunk build --release`.
-2. It will generate a `dist` directory as a "static html" website
-3. Upload the `dist` directory to any of the numerous free hosting websites including [GitHub Pages](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
-4. we already provide a workflow that auto-deploys our app to GitHub pages if you enable it.
-> To enable Github Pages, you need to go to Repository -> Settings -> Pages -> Source -> set to `gh-pages` branch and `/` (root).
->
-> If `gh-pages` is not available in `Source`, just create and push a branch called `gh-pages` and it should be available.
->
-> If you renamed the `main` branch to something else (say you re-initialized the repository with `master` as the initial branch), be sure to edit the github workflows `.github/workflows/pages.yml` file to reflect the change
-> ```yml
-> on:
->   push:
->     branches:
->       - <branch name>
-> ```
+To run in a web browser:
 
-You can test the template app at <https://emilk.github.io/eframe_template/>.
+```bash
+trunk serve
+```
 
-## Updating egui
+## 📝 Usage
 
-As of 2023, egui is in active development with frequent releases with breaking changes. [eframe_template](https://github.com/emilk/eframe_template/) will be updated in lock-step to always use the latest version of egui.
+1. **Add Tasks**: Click the "+" button or use keyboard shortcuts to quickly add new tasks
+2. **Set Priorities**: Assign priority levels (High, Medium, Low) to organize your workload
+3. **Mark Complete**: Check off completed tasks to track your progress
+4. **Filter & Search**: Use filters to view specific categories or search for tasks
+5. **Edit Tasks**: Double-click any task to edit its details
 
-When updating `egui` and `eframe` it is recommended you do so one version at the time, and read about the changes in [the egui changelog](https://github.com/emilk/egui/blob/master/CHANGELOG.md) and [eframe changelog](https://github.com/emilk/egui/blob/master/crates/eframe/CHANGELOG.md).
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+
+## 📄 License
+
+This project is dual-licensed under:
+
+- [MIT License](LICENSE-MIT)
+- [Apache License 2.0](LICENSE-APACHE)
+
+## 🔧 Development
+
+### Building from Source
+
+```bash
+cargo build --release
+```
+
+### Running Tests
+
+```bash
+cargo test
+```
+
+---
+
+Built with ❤️ in Rust
