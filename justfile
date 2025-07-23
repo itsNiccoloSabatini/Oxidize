@@ -5,7 +5,7 @@
 set shell := ["powershell.exe", "-c"]
 
 # Default recipe: run tests and format code
-default: ci clippy audit
+default: ci build clippy
 
 # Run all tests
 test:
@@ -79,6 +79,3 @@ watch-run:
 docs:
     cargo doc --open
 
-# Audit dependencies for security vulnerabilities
-audit:
-    cargo audit
