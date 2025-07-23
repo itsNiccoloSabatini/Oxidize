@@ -79,3 +79,6 @@ watch-run:
 docs:
     cargo doc --open
 
+# Audit dependencies for security vulnerabilities
+audit:
+    cargo audit
