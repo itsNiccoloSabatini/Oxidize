@@ -78,4 +78,3 @@ watch-run:
 # Generate documentation
 docs:
     cargo doc --open
-
