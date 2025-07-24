@@ -11,6 +11,7 @@ pub struct OxidiseApp {
     /// You can add more fields to this struct as needed.
 
     /// The current main panel being displayed.
+    #[serde(skip)]
     pub mainpanel: OxidiseMainpanel,
     /// The sizes used for various UI elements.
     /// This is used to ensure consistent sizing across the application.
