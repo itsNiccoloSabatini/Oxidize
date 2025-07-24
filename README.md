@@ -3,7 +3,7 @@
 [![dependency status](https://deps.rs/repo/github/itsNiccoloSabatini/Oxidize/status.svg)](https://deps.rs/repo/github/itsNiccoloSabatini/Oxidize)
 [![Build Status](https://github.com/itsNiccoloSabatini/Oxidize/workflows/CI/badge.svg)](https://github.com/itsNiccoloSabatini/Oxidize/actions?workflow=CI)
 
-![Oxidize Logo](oxidise_logo_wide.jpg)
+![Oxidize Logo](oxidize_logo_wide.png)
 
 ## 🚀 Purpose
 
