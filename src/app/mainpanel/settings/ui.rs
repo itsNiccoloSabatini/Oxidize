@@ -10,7 +10,8 @@ pub fn draw_settings(
 ) {
     draw_mainpanel_heading(SETTINGS_TITLE, ui, sizes);
     ui.horizontal(|ui| {
-        ui.label("Oxidise theme preference:");
+        let theme_text = RichText::new("Oxidize theme: ").size(sizes.text_body_size());
+        ui.label(theme_text);
         global_theme_preference_buttons(ui, sizes);
     });
 }
