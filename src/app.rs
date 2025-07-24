@@ -1,13 +1,21 @@
 mod mainpanel;
+mod size;
 
 use crate::app::mainpanel::OxidiseMainpanel;
+use crate::app::size::Size;
 /// We derive Deserialize/Serialize so we can persist app state on shutdown.
 #[derive(Default, serde::Deserialize, serde::Serialize)]
 #[serde(default)] // if we add new fields, give them default values when deserializing old state
 pub struct OxidiseApp {
     /// The app state is stored in a single struct, which can be serialized and deserialized.
     /// You can add more fields to this struct as needed.
+
+    /// The current main panel being displayed.
     pub mainpanel: OxidiseMainpanel,
+    /// The sizes used for various UI elements.
+    /// This is used to ensure consistent sizing across the application.
+    #[serde(skip)]
+    pub sizes: Size,
 }
 
 impl OxidiseApp {
@@ -51,8 +59,9 @@ impl eframe::App for OxidiseApp {
                     });
                     ui.add_space(16.0);
                 }
-
-                egui::widgets::global_theme_preference_buttons(ui);
+                if ui.button("Toggle Main Panel").clicked() {
+                    self.mainpanel.toggle();
+                }
             });
         });
 
