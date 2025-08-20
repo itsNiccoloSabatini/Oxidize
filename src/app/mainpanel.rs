@@ -24,6 +24,14 @@ impl OxidiseMainpanel {
             Self::Settings => Self::Dashboard,
         };
     }
+
+    pub fn set_dashboard(&mut self) {
+        *self = Self::Dashboard;
+    }
+
+    pub fn set_settings(&mut self) {
+        *self = Self::Settings;
+    }
 }
 
 pub fn draw_mainpanel(

@@ -1,7 +1,9 @@
 mod mainpanel;
+mod sidepanel;
 mod size;
 
 use crate::app::mainpanel::OxidiseMainpanel;
+use crate::app::sidepanel::draw_side_panel_ui;
 use crate::app::size::Size;
 /// We derive Deserialize/Serialize so we can persist app state on shutdown.
 #[derive(Default, serde::Deserialize, serde::Serialize)]
@@ -65,6 +67,8 @@ impl eframe::App for OxidiseApp {
                 }
             });
         });
+
+        draw_side_panel_ui(ctx, self);
 
         egui::CentralPanel::default().show(ctx, |ui| {
             // The central panel the region left after adding TopPanel's and SidePanel's
