@@ -2,10 +2,7 @@ use egui::RichText;
 
 use crate::OxidiseApp;
 
-pub fn draw_side_panel_buttons(
-    ui: &mut egui::Ui,
-    ox_app: &mut OxidiseApp,
-) {
+pub fn draw_side_panel_buttons(ui: &mut egui::Ui, ox_app: &mut OxidiseApp) {
     let dashboard_button = draw_dashboard_button(ui);
     let settings_button = draw_settings_button(ui);
     if dashboard_button.clicked() {

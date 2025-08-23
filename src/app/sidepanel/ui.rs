@@ -1,9 +1,6 @@
-use crate::{app::sidepanel::buttons::draw_side_panel_buttons, OxidiseApp};
+use crate::{OxidiseApp, app::sidepanel::buttons::draw_side_panel_buttons};
 
-pub fn draw_side_panel_ui(
-    ctx: &egui::Context,
-    ox_app: &mut OxidiseApp,
-) {
+pub fn draw_side_panel_ui(ctx: &egui::Context, ox_app: &mut OxidiseApp) {
     egui::SidePanel::left("side_panel")
         .resizable(false)
         .show(ctx, |ui| {
