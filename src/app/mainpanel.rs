@@ -1,16 +1,16 @@
-use crate::{OxidiseApp, app::size::Size};
+use crate::{OxidizeApp, app::size::Size};
 
 mod dashboard;
 mod settings;
 
 #[derive(Default, Debug, Clone, Copy, PartialEq, Eq, serde::Deserialize, serde::Serialize)]
-pub enum OxidiseMainpanel {
+pub enum OxidizeMainpanel {
     #[default]
     Dashboard,
     Settings,
 }
 
-impl OxidiseMainpanel {
+impl OxidizeMainpanel {
     pub fn as_str(&self) -> &str {
         match self {
             Self::Dashboard => "Dashboard",
@@ -24,17 +24,25 @@ impl OxidiseMainpanel {
             Self::Settings => Self::Dashboard,
         };
     }
+
+    pub fn set_dashboard(&mut self) {
+        *self = Self::Dashboard;
+    }
+
+    pub fn set_settings(&mut self) {
+        *self = Self::Settings;
+    }
 }
 
 pub fn draw_mainpanel(
     ctx: &egui::Context,
     ui: &mut egui::Ui,
     frame: &mut eframe::Frame,
-    ox_app: &OxidiseApp,
+    ox_app: &OxidizeApp,
 ) {
     match ox_app.mainpanel {
-        OxidiseMainpanel::Dashboard => dashboard::draw_dashboard(ctx, ui, frame, &ox_app.sizes),
-        OxidiseMainpanel::Settings => settings::draw_settings(ctx, ui, frame, &ox_app.sizes),
+        OxidizeMainpanel::Dashboard => dashboard::draw_dashboard(ctx, ui, frame, &ox_app.sizes),
+        OxidizeMainpanel::Settings => settings::draw_settings(ctx, ui, frame, &ox_app.sizes),
     }
 }
 

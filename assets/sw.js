@@ -1,9 +1,9 @@
-var cacheName = 'oxidise-pwa';
+var cacheName = 'oxidize-pwa';
 var filesToCache = [
   './',
   './index.html',
-  './oxidise.js',
-  './oxidise_bg.wasm',
+  './oxidize.js',
+  './oxidize_bg.wasm',
 ];
 
 /* Start the service worker and cache all of the app's content */
