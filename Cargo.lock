@@ -2075,7 +2075,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "oxidise"
+name = "oxidize"
 version = "0.1.0-beta.1"
 dependencies = [
  "eframe",

@@ -18,9 +18,9 @@ fn main() -> eframe::Result {
         ..Default::default()
     };
     eframe::run_native(
-        "Oxidise",
+        "Oxidize",
         native_options,
-        Box::new(|cc| Ok(Box::new(oxidise::OxidiseApp::new(cc)))),
+        Box::new(|cc| Ok(Box::new(oxidize::OxidizeApp::new(cc)))),
     )
 }
 
@@ -50,7 +50,7 @@ fn main() {
             .start(
                 canvas,
                 web_options,
-                Box::new(|cc| Ok(Box::new(oxidise::OxidiseApp::new(cc)))),
+                Box::new(|cc| Ok(Box::new(oxidize::OxidizeApp::new(cc)))),
             )
             .await;
 

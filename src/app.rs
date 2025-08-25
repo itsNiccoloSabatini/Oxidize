@@ -2,26 +2,26 @@ mod mainpanel;
 mod sidepanel;
 mod size;
 
-use crate::app::mainpanel::OxidiseMainpanel;
+use crate::app::mainpanel::OxidizeMainpanel;
 use crate::app::sidepanel::draw_side_panel_ui;
 use crate::app::size::Size;
 /// We derive Deserialize/Serialize so we can persist app state on shutdown.
 #[derive(Default, serde::Deserialize, serde::Serialize)]
 #[serde(default)] // if we add new fields, give them default values when deserializing old state
-pub struct OxidiseApp {
+pub struct OxidizeApp {
     /// The app state is stored in a single struct, which can be serialized and deserialized.
     /// You can add more fields to this struct as needed.
 
     /// The current main panel being displayed.
     #[serde(skip)]
-    pub mainpanel: OxidiseMainpanel,
+    pub mainpanel: OxidizeMainpanel,
     /// The sizes used for various UI elements.
     /// This is used to ensure consistent sizing across the application.
     #[serde(skip)]
     pub sizes: Size,
 }
 
-impl OxidiseApp {
+impl OxidizeApp {
     /// Called once before the first frame.
     pub fn new(cc: &eframe::CreationContext<'_>) -> Self {
         // This is also where you can customize the look and feel of egui using
@@ -37,7 +37,7 @@ impl OxidiseApp {
     }
 }
 
-impl eframe::App for OxidiseApp {
+impl eframe::App for OxidizeApp {
     /// Called by the framework to save state before shutdown.
     fn save(&mut self, storage: &mut dyn eframe::Storage) {
         eframe::set_value(storage, eframe::APP_KEY, self);
@@ -61,9 +61,6 @@ impl eframe::App for OxidiseApp {
                         }
                     });
                     ui.add_space(16.0);
-                }
-                if ui.button("Toggle Main Panel").clicked() {
-                    self.mainpanel.toggle();
                 }
             });
         });

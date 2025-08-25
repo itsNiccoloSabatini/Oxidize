@@ -16,4 +16,9 @@ impl Size {
     pub fn space_after_heading(&self) -> f32 {
         8.0
     }
+
+    #[expect(clippy::unused_self)]
+    pub fn copy_right_text_size(&self) -> f32 {
+        11.0
+    }
 }
