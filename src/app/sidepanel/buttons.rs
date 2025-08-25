@@ -19,11 +19,11 @@ fn draw_dashboard_button(ui: &mut egui::Ui, active_menu: &OxidizeMainpanel) -> e
         RichText::new("🏠 Home")
             .size(32.0)
             .color(if *active_menu == OxidizeMainpanel::Dashboard {
-                Color32::from_rgb(64, 149, 255) // Blu iOS - molto visibile
-            // Color32::from_rgb(0, 122, 255)   // Blu scuro alternativo
-            // Color32::from_rgb(52, 199, 89)   // Verde sistema
-            // Color32::from_rgb(255, 59, 48)   // Rosso sistema
-            // Color32::from_rgb(175, 82, 222)  // Viola moderno
+                Color32::from_rgb(64, 149, 255) // iOS Blue - much more visible
+            // Color32::from_rgb(0, 122, 255)   // Dark Blue - alternative
+            // Color32::from_rgb(52, 199, 89)   // System Green
+            // Color32::from_rgb(255, 59, 48)   // System Red
+            // Color32::from_rgb(175, 82, 222)  // Modern Purple
             } else {
                 default_text_color
             });
@@ -33,11 +33,11 @@ fn draw_settings_button(ui: &mut egui::Ui, active_menu: &OxidizeMainpanel) -> eg
     let default_text_color = ui.style().visuals.text_color();
     let text = RichText::new("⚙ Settings").size(32.0).color(
         if *active_menu == OxidizeMainpanel::Settings {
-            Color32::from_rgb(64, 149, 255) // Blu iOS - molto visibile
-        // Color32::from_rgb(0, 122, 255)   // Blu scuro alternativo
-        // Color32::from_rgb(52, 199, 89)   // Verde sistema
-        // Color32::from_rgb(255, 59, 48)   // Rosso sistema
-        // Color32::from_rgb(175, 82, 222)  // Viola moderno
+            Color32::from_rgb(64, 149, 255) // iOS Blue - much more visible
+        // Color32::from_rgb(0, 122, 255)   // Dark Blue - alternative
+        // Color32::from_rgb(52, 199, 89)   // System Green
+        // Color32::from_rgb(255, 59, 48)   // System Red
+        // Color32::from_rgb(175, 82, 222)  // Modern Purple
         } else {
             default_text_color
         },
