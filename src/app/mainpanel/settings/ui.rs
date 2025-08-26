@@ -14,6 +14,9 @@ pub fn draw_settings(
         ui.label(theme_text);
         global_theme_preference_buttons(ui, sizes);
     });
+    ui.horizontal(|ui| {
+        ui.label(RichText::new("Selection Color: ").size(sizes.text_body_size()));
+    });
 }
 
 fn global_theme_preference_buttons(ui: &mut egui::Ui, sizes: &Size) {

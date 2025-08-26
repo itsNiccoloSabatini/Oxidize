@@ -1,6 +1,6 @@
-use egui::{Color32, RichText};
+use egui::RichText;
 
-use crate::{OxidizeApp, app::mainpanel::OxidizeMainpanel};
+use crate::{app::{color::OxidizeColor, mainpanel::OxidizeMainpanel}, OxidizeApp};
 
 pub fn draw_side_panel_buttons(ui: &mut egui::Ui, ox_app: &mut OxidizeApp) {
     let dashboard_button = draw_dashboard_button(ui, &ox_app.mainpanel);
@@ -19,11 +19,7 @@ fn draw_dashboard_button(ui: &mut egui::Ui, active_menu: &OxidizeMainpanel) -> e
         RichText::new("🏠 Home")
             .size(32.0)
             .color(if *active_menu == OxidizeMainpanel::Dashboard {
-                Color32::from_rgb(64, 149, 255) // iOS Blue - much more visible
-            // Color32::from_rgb(0, 122, 255)   // Dark Blue - alternative
-            // Color32::from_rgb(52, 199, 89)   // System Green
-            // Color32::from_rgb(255, 59, 48)   // System Red
-            // Color32::from_rgb(175, 82, 222)  // Modern Purple
+                OxidizeColor::IOSBlue.to_egui_c32()
             } else {
                 default_text_color
             });
@@ -33,11 +29,7 @@ fn draw_settings_button(ui: &mut egui::Ui, active_menu: &OxidizeMainpanel) -> eg
     let default_text_color = ui.style().visuals.text_color();
     let text = RichText::new("⚙ Settings").size(32.0).color(
         if *active_menu == OxidizeMainpanel::Settings {
-            Color32::from_rgb(64, 149, 255) // iOS Blue - much more visible
-        // Color32::from_rgb(0, 122, 255)   // Dark Blue - alternative
-        // Color32::from_rgb(52, 199, 89)   // System Green
-        // Color32::from_rgb(255, 59, 48)   // System Red
-        // Color32::from_rgb(175, 82, 222)  // Modern Purple
+            OxidizeColor::IOSBlue.to_egui_c32()
         } else {
             default_text_color
         },
