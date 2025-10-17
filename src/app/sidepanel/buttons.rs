@@ -1,6 +1,9 @@
 use egui::RichText;
 
-use crate::{app::{color::OxidizeColor, mainpanel::OxidizeMainpanel}, OxidizeApp};
+use crate::{
+    OxidizeApp,
+    app::{color::OxidizeColor, mainpanel::OxidizeMainpanel},
+};
 
 pub fn draw_side_panel_buttons(ui: &mut egui::Ui, ox_app: &mut OxidizeApp) {
     let dashboard_button = draw_dashboard_button(ui, &ox_app.mainpanel);
