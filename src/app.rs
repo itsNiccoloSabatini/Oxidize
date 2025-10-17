@@ -1,3 +1,4 @@
+mod color;
 mod mainpanel;
 mod sidepanel;
 mod size;
