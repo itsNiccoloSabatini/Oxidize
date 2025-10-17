@@ -44,7 +44,14 @@ pub fn draw_mainpanel(
     match ox_app.mainpanel {
         OxidizeMainpanel::Dashboard => dashboard::draw_dashboard(ctx, ui, frame, &ox_app.sizes),
         OxidizeMainpanel::Settings => {
-            settings::draw_settings(ctx, ui, frame, &ox_app.sizes, &mut ox_app.language);
+            settings::draw_settings(
+                ctx,
+                ui,
+                frame,
+                &ox_app.sizes,
+                &mut ox_app.language,
+                &mut ox_app.color_theme,
+            );
         }
     }
 }

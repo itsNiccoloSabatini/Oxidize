@@ -4,6 +4,7 @@ mod sidepanel;
 mod size;
 
 use crate::Language;
+use crate::app::color::OxidizeThemeColor;
 use crate::app::mainpanel::OxidizeMainpanel;
 use crate::app::sidepanel::draw_side_panel_ui;
 use crate::app::size::Size;
@@ -24,6 +25,9 @@ pub struct OxidizeApp {
     /// The current language of the application.
     /// This is used for internationalization.
     pub language: Language,
+    /// The current color theme of the application.
+    /// This is used to ensure consistent theming across the application.
+    pub color_theme: OxidizeThemeColor,
 }
 
 impl OxidizeApp {

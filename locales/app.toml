@@ -3,3 +3,56 @@ _version = 2
 [settings]
 it = "⚙ Impostazioni"
 en = "⚙ Settings"
+
+[home]
+it = "🏠 Home"
+en = "🏠 Home"
+
+[system]
+it = "🖥 Sistema"
+en = "🖥 System"
+
+[dark]
+it = "🌙 Scuro"
+en = "🌙 Dark"
+
+[light]
+it = "☀ Chiaro"
+en = "☀ Light"
+
+[theme]
+it = "Tema Oxidize: "
+en = "Oxidize theme: "
+
+[lang]
+it = "Lingua: "
+en = "Language: "
+
+[select-one]
+it = "Seleziona una!"
+en = "Select one!"
+
+[select-color]
+it = "Colore tema: "
+en = "Theme color: "
+
+[ios-blue]
+it = "iOS Blu"
+en = "iOS Blue"
+
+[dark-alt-blue]
+it = "Blu scuro alternativo"
+en = "Dark alternative blue"
+
+[system-green]
+it = "Verde di Sistema"
+en = "System green"
+
+[system-red]
+it = "Rosso di Sistema"
+en = "System red"
+
+[modern-purple]
+it = "Viola moderna"
+en = "Modern purple"
+

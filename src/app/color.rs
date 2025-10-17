@@ -1,20 +1,28 @@
 use egui::Color32;
+use rust_i18n::t;
 
 #[non_exhaustive]
-pub enum OxidizeColor {
+#[derive(Default, Debug, Clone, Copy, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
+pub enum OxidizeThemeColor {
+    #[default]
     IOSBlue,
-    #[expect(dead_code)] // Not currently used
     DarkAlternativeBlue,
-    #[expect(dead_code)] // Not currently used
     SystemGreen,
-    #[expect(dead_code)] // Not currently used
     SystemRed,
-    #[expect(dead_code)] // Not currently used
     ModernPurple,
 }
 
-impl OxidizeColor {
-    pub fn to_egui_c32(&self) -> Color32 {
+impl OxidizeThemeColor {
+    pub fn as_string(&self) -> String {
+        match self {
+            Self::IOSBlue => t!("ios-blue").to_string(),
+            Self::DarkAlternativeBlue => t!("dark-alt-blue").to_string(),
+            Self::SystemGreen => t!("system-green").to_string(),
+            Self::SystemRed => t!("system-red").to_string(),
+            Self::ModernPurple => t!("modern-purple").to_string(),
+        }
+    }
+    pub fn as_egui_c32(&self) -> Color32 {
         match self {
             Self::IOSBlue => Color32::from_rgb(64, 149, 255),
             Self::DarkAlternativeBlue => Color32::from_rgb(0, 122, 255),
