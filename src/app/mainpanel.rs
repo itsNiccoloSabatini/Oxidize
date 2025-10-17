@@ -1,9 +1,10 @@
 use crate::{OxidizeApp, app::size::Size};
+use rust_i18n::t;
 
 mod dashboard;
 mod settings;
 
-#[derive(Default, Debug, Clone, Copy, PartialEq, Eq, serde::Deserialize, serde::Serialize)]
+#[derive(Default, Debug, Clone, Copy, PartialEq, Eq)]
 pub enum OxidizeMainpanel {
     #[default]
     Dashboard,
@@ -11,10 +12,10 @@ pub enum OxidizeMainpanel {
 }
 
 impl OxidizeMainpanel {
-    pub fn as_str(&self) -> &str {
+    pub fn as_str(&self) -> String {
         match self {
-            Self::Dashboard => "Dashboard",
-            Self::Settings => "Settings",
+            Self::Dashboard => t!("Dashboard").to_string(),
+            Self::Settings => t!("Settings").to_string(),
         }
     }
 
@@ -38,11 +39,13 @@ pub fn draw_mainpanel(
     ctx: &egui::Context,
     ui: &mut egui::Ui,
     frame: &mut eframe::Frame,
-    ox_app: &OxidizeApp,
+    ox_app: &mut OxidizeApp,
 ) {
     match ox_app.mainpanel {
         OxidizeMainpanel::Dashboard => dashboard::draw_dashboard(ctx, ui, frame, &ox_app.sizes),
-        OxidizeMainpanel::Settings => settings::draw_settings(ctx, ui, frame, &ox_app.sizes),
+        OxidizeMainpanel::Settings => {
+            settings::draw_settings(ctx, ui, frame, &ox_app.sizes, &mut ox_app.language);
+        }
     }
 }
 

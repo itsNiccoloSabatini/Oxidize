@@ -1,4 +1,5 @@
 use egui::RichText;
+use rust_i18n::t;
 
 use crate::{
     OxidizeApp,
@@ -30,7 +31,7 @@ fn draw_dashboard_button(ui: &mut egui::Ui, active_menu: &OxidizeMainpanel) -> e
 }
 fn draw_settings_button(ui: &mut egui::Ui, active_menu: &OxidizeMainpanel) -> egui::Response {
     let default_text_color = ui.style().visuals.text_color();
-    let text = RichText::new("⚙ Settings").size(32.0).color(
+    let text = RichText::new(t!("settings")).size(32.0).color(
         if *active_menu == OxidizeMainpanel::Settings {
             OxidizeColor::IOSBlue.to_egui_c32()
         } else {

@@ -1,4 +1,7 @@
-use crate::app::{mainpanel::draw_mainpanel_heading, size::Size};
+use crate::{
+    Language,
+    app::{mainpanel::draw_mainpanel_heading, size::Size},
+};
 use egui::{RichText, Theme, ThemePreference};
 
 const SETTINGS_TITLE: &str = "⚙ Settings";
@@ -7,6 +10,7 @@ pub fn draw_settings(
     ui: &mut egui::Ui,
     _frame: &mut eframe::Frame,
     sizes: &Size,
+    language: &mut Language,
 ) {
     draw_mainpanel_heading(SETTINGS_TITLE, ui, sizes);
     ui.horizontal(|ui| {
@@ -16,6 +20,15 @@ pub fn draw_settings(
     });
     ui.horizontal(|ui| {
         ui.label(RichText::new("Selection Color: ").size(sizes.text_body_size()));
+    });
+    ui.horizontal(|ui| {
+        ui.label(RichText::new("Language: ").size(sizes.text_body_size()));
+        egui::ComboBox::from_label("Select one!")
+            .selected_text(language.as_str())
+            .show_ui(ui, |ui| {
+                ui.selectable_value(language, Language::ItIt, "Italiano");
+                ui.selectable_value(language, Language::EnUs, "English");
+            });
     });
 }
 

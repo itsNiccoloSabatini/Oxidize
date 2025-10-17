@@ -5,6 +5,7 @@ use crate::{OxidizeApp, app::sidepanel::buttons::draw_side_panel_buttons};
 pub fn draw_side_panel_ui(ctx: &egui::Context, ox_app: &mut OxidizeApp) {
     egui::SidePanel::left("side_panel")
         .resizable(false)
+        .min_width(250.0)
         .show(ctx, |ui| {
             ui.heading("Oxidize");
             ui.separator();

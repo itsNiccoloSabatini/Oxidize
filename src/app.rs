@@ -3,6 +3,7 @@ mod mainpanel;
 mod sidepanel;
 mod size;
 
+use crate::Language;
 use crate::app::mainpanel::OxidizeMainpanel;
 use crate::app::sidepanel::draw_side_panel_ui;
 use crate::app::size::Size;
@@ -20,6 +21,9 @@ pub struct OxidizeApp {
     /// This is used to ensure consistent sizing across the application.
     #[serde(skip)]
     pub sizes: Size,
+    /// The current language of the application.
+    /// This is used for internationalization.
+    pub language: Language,
 }
 
 impl OxidizeApp {
@@ -48,6 +52,7 @@ impl eframe::App for OxidizeApp {
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
         // Put your widgets into a `SidePanel`, `TopBottomPanel`, `CentralPanel`, `Window` or `Area`.
         // For inspiration and more examples, go to https://emilk.github.io/egui
+        rust_i18n::set_locale(self.language.as_i18n_code());
 
         egui::TopBottomPanel::top("top_panel").show(ctx, |ui| {
             // The top panel is often a good place for a menu bar:
