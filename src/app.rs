@@ -3,6 +3,9 @@ mod mainpanel;
 mod sidepanel;
 mod size;
 
+use egui::style::{Selection, WidgetVisuals};
+use egui::{CornerRadius, Stroke};
+
 use crate::Language;
 use crate::app::color::OxidizeThemeColor;
 use crate::app::mainpanel::OxidizeMainpanel;
@@ -44,6 +47,28 @@ impl OxidizeApp {
             Default::default()
         }
     }
+    
+    pub fn active_open_widget_visuals(&self) -> WidgetVisuals {
+        WidgetVisuals {
+            bg_fill: self.color_theme.as_egui_c32(),
+            weak_bg_fill: self.color_theme.as_egui_c32(),
+            bg_stroke: Stroke::NONE,
+            corner_radius: CornerRadius::same(2),
+            fg_stroke: self.color_theme.as_egui_stroke(),
+            expansion: 0.0,
+        }
+    }
+    
+    pub fn hovered_widget_visuals(&self) -> WidgetVisuals {
+        WidgetVisuals {
+            bg_fill: self.color_theme.as_egui_c32_hover(),
+            weak_bg_fill: self.color_theme.as_egui_c32_hover(),
+            bg_stroke: Stroke::NONE,
+            corner_radius: CornerRadius::same(2),
+            fg_stroke: self.color_theme.as_egui_stroke(),
+            expansion: 0.0,
+        }
+    }
 }
 
 impl eframe::App for OxidizeApp {
@@ -60,7 +85,7 @@ impl eframe::App for OxidizeApp {
 
         egui::TopBottomPanel::top("top_panel").show(ctx, |ui| {
             // The top panel is often a good place for a menu bar:
-
+            ui.visuals_mut().selection = Selection{bg_fill: self.color_theme.as_egui_c32_selection(), stroke: self.color_theme.as_egui_stroke()};
             egui::MenuBar::new().ui(ui, |ui| {
                 // NOTE: no File->Quit on web pages!
                 let is_web = cfg!(target_arch = "wasm32");

@@ -1,4 +1,5 @@
 use crate::{OxidizeApp, app::size::Size};
+use egui::{Visuals, style::Selection};
 use rust_i18n::t;
 
 mod dashboard;
@@ -41,6 +42,15 @@ pub fn draw_mainpanel(
     frame: &mut eframe::Frame,
     ox_app: &mut OxidizeApp,
 ) {
+    let mut visuals = ui.visuals().clone();
+    visuals.selection = Selection {
+        bg_fill: ox_app.color_theme.as_egui_c32_selection(),
+        stroke: ox_app.color_theme.as_egui_stroke(),
+    };
+    visuals.widgets.open = ox_app.active_open_widget_visuals();
+    visuals.widgets.active = ox_app.active_open_widget_visuals();
+    visuals.widgets.hovered = ox_app.hovered_widget_visuals();
+    ctx.set_visuals(visuals);
     match ox_app.mainpanel {
         OxidizeMainpanel::Dashboard => dashboard::draw_dashboard(ctx, ui, frame, &ox_app.sizes),
         OxidizeMainpanel::Settings => {
