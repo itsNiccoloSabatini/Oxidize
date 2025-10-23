@@ -47,7 +47,7 @@ impl OxidizeApp {
             Default::default()
         }
     }
-    
+
     pub fn active_open_widget_visuals(&self) -> WidgetVisuals {
         WidgetVisuals {
             bg_fill: self.color_theme.as_egui_c32(),
@@ -58,7 +58,7 @@ impl OxidizeApp {
             expansion: 0.0,
         }
     }
-    
+
     pub fn hovered_widget_visuals(&self) -> WidgetVisuals {
         WidgetVisuals {
             bg_fill: self.color_theme.as_egui_c32_hover(),
@@ -85,7 +85,10 @@ impl eframe::App for OxidizeApp {
 
         egui::TopBottomPanel::top("top_panel").show(ctx, |ui| {
             // The top panel is often a good place for a menu bar:
-            ui.visuals_mut().selection = Selection{bg_fill: self.color_theme.as_egui_c32_selection(), stroke: self.color_theme.as_egui_stroke()};
+            ui.visuals_mut().selection = Selection {
+                bg_fill: self.color_theme.as_egui_c32_selection(),
+                stroke: self.color_theme.as_egui_stroke(),
+            };
             egui::MenuBar::new().ui(ui, |ui| {
                 // NOTE: no File->Quit on web pages!
                 let is_web = cfg!(target_arch = "wasm32");

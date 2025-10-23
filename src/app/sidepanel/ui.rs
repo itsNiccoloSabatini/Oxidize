@@ -1,4 +1,4 @@
-use egui::{style::Selection, RichText};
+use egui::{RichText, style::Selection};
 
 use crate::{OxidizeApp, app::sidepanel::buttons::draw_side_panel_buttons};
 
@@ -8,7 +8,10 @@ pub fn draw_side_panel_ui(ctx: &egui::Context, ox_app: &mut OxidizeApp) {
         .min_width(250.0)
         .show(ctx, |ui| {
             let mut visuals = ui.visuals().clone();
-            visuals.selection = Selection{bg_fill: ox_app.color_theme.as_egui_c32_selection(), stroke: ox_app.color_theme.as_egui_stroke()};
+            visuals.selection = Selection {
+                bg_fill: ox_app.color_theme.as_egui_c32_selection(),
+                stroke: ox_app.color_theme.as_egui_stroke(),
+            };
             ctx.set_visuals(visuals);
             ui.heading("Oxidize");
             ui.separator();

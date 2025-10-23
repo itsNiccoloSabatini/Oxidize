@@ -1,5 +1,5 @@
 use crate::{OxidizeApp, app::size::Size};
-use egui::{Visuals, style::Selection};
+use egui::style::Selection;
 use rust_i18n::t;
 
 mod dashboard;

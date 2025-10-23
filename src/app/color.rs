@@ -1,4 +1,3 @@
-use eframe::glow::{STENCIL_FAIL, STENCIL_FUNC};
 use egui::{Color32, Stroke};
 use rust_i18n::t;
 
@@ -23,7 +22,7 @@ impl OxidizeThemeColor {
             Self::ModernPurple => t!("modern-purple").to_string(),
         }
     }
-    
+
     pub fn as_egui_c32(&self) -> Color32 {
         match self {
             Self::IOSBlue => Color32::from_rgb(64, 149, 255),
@@ -33,7 +32,7 @@ impl OxidizeThemeColor {
             Self::ModernPurple => Color32::from_rgb(175, 82, 222),
         }
     }
-    
+
     pub fn as_egui_c32_dark(&self) -> Color32 {
         match self {
             Self::IOSBlue => Color32::from_rgb(0, 46, 102),
@@ -43,7 +42,7 @@ impl OxidizeThemeColor {
             Self::ModernPurple => Color32::from_rgb(63, 16, 86),
         }
     }
-    
+
     pub fn as_egui_c32_hover(&self) -> Color32 {
         match self {
             Self::IOSBlue => Color32::from_rgb(179, 213, 255),
@@ -53,21 +52,23 @@ impl OxidizeThemeColor {
             Self::ModernPurple => Color32::from_rgb(226, 190, 243),
         }
     }
-    
-     pub fn as_egui_c32_selection(&self) -> Color32 {
-         match self {
-             Self::IOSBlue => Color32::from_rgb(179, 213, 255),
-             Self::DarkAlternativeBlue => Color32::from_rgb(179, 215, 255),
-             Self::SystemGreen => Color32::from_rgb(194, 239, 205),
-             Self::SystemRed => Color32::from_rgb(255, 184, 179),
-             Self::ModernPurple => Color32::from_rgb(226, 190, 243),
-         }
-     }
-    
+
+    pub fn as_egui_c32_selection(&self) -> Color32 {
+        match self {
+            Self::IOSBlue => Color32::from_rgb(179, 213, 255),
+            Self::DarkAlternativeBlue => Color32::from_rgb(179, 215, 255),
+            Self::SystemGreen => Color32::from_rgb(194, 239, 205),
+            Self::SystemRed => Color32::from_rgb(255, 184, 179),
+            Self::ModernPurple => Color32::from_rgb(226, 190, 243),
+        }
+    }
+
     pub fn as_egui_stroke(&self) -> Stroke {
         match self {
             Self::IOSBlue => Stroke::new(2.0, Self::IOSBlue.as_egui_c32_dark()),
-            Self::DarkAlternativeBlue => Stroke::new(2.0, Self::DarkAlternativeBlue.as_egui_c32_dark()),
+            Self::DarkAlternativeBlue => {
+                Stroke::new(2.0, Self::DarkAlternativeBlue.as_egui_c32_dark())
+            }
             Self::SystemGreen => Stroke::new(2.0, Self::SystemGreen.as_egui_c32_dark()),
             Self::SystemRed => Stroke::new(2.0, Self::SystemRed.as_egui_c32_dark()),
             Self::ModernPurple => Stroke::new(2.0, Self::ModernPurple.as_egui_c32_dark()),
