@@ -1,9 +1,11 @@
 use crate::{OxidizeApp, app::size::Size};
+use egui::style::Selection;
+use rust_i18n::t;
 
 mod dashboard;
 mod settings;
 
-#[derive(Default, Debug, Clone, Copy, PartialEq, Eq, serde::Deserialize, serde::Serialize)]
+#[derive(Default, Debug, Clone, Copy, PartialEq, Eq)]
 pub enum OxidizeMainpanel {
     #[default]
     Dashboard,
@@ -11,10 +13,10 @@ pub enum OxidizeMainpanel {
 }
 
 impl OxidizeMainpanel {
-    pub fn as_str(&self) -> &str {
+    pub fn to_string(&self) -> String {
         match self {
-            Self::Dashboard => "Dashboard",
-            Self::Settings => "Settings",
+            Self::Dashboard => t!("Dashboard").to_string(),
+            Self::Settings => t!("Settings").to_string(),
         }
     }
 
@@ -38,11 +40,29 @@ pub fn draw_mainpanel(
     ctx: &egui::Context,
     ui: &mut egui::Ui,
     frame: &mut eframe::Frame,
-    ox_app: &OxidizeApp,
+    ox_app: &mut OxidizeApp,
 ) {
+    let mut visuals = ui.visuals().clone();
+    visuals.selection = Selection {
+        bg_fill: ox_app.color_theme.as_egui_c32_selection(),
+        stroke: ox_app.color_theme.as_egui_stroke(),
+    };
+    visuals.widgets.open = ox_app.active_open_widget_visuals();
+    visuals.widgets.active = ox_app.active_open_widget_visuals();
+    visuals.widgets.hovered = ox_app.hovered_widget_visuals();
+    ctx.set_visuals(visuals);
     match ox_app.mainpanel {
         OxidizeMainpanel::Dashboard => dashboard::draw_dashboard(ctx, ui, frame, &ox_app.sizes),
-        OxidizeMainpanel::Settings => settings::draw_settings(ctx, ui, frame, &ox_app.sizes),
+        OxidizeMainpanel::Settings => {
+            settings::draw_settings(
+                ctx,
+                ui,
+                frame,
+                &ox_app.sizes,
+                &mut ox_app.language,
+                &mut ox_app.color_theme,
+            );
+        }
     }
 }
 
