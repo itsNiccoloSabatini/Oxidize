@@ -13,7 +13,7 @@ pub enum OxidizeMainpanel {
 }
 
 impl OxidizeMainpanel {
-    pub fn as_str(&self) -> String {
+    pub fn to_string(&self) -> String {
         match self {
             Self::Dashboard => t!("Dashboard").to_string(),
             Self::Settings => t!("Settings").to_string(),
