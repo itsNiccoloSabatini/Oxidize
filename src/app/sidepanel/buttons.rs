@@ -1,4 +1,4 @@
-use egui::RichText;
+use egui::{RichText, Sense};
 use rust_i18n::t;
 
 use crate::{
@@ -30,8 +30,17 @@ fn draw_dashboard_button(
             default_text_color
         },
     );
-    ui.add(egui::Button::new(text).min_size(egui::vec2(200.0, 0.0)))
+    ui.add(
+        egui::Button::new(text)
+            .sense(if *active_menu == OxidizeMainpanel::Dashboard {
+                Sense::FOCUSABLE
+            } else {
+                Sense::CLICK
+            })
+            .min_size(egui::vec2(200.0, 0.0)),
+    )
 }
+
 fn draw_settings_button(
     ui: &mut egui::Ui,
     active_menu: &OxidizeMainpanel,
@@ -45,5 +54,13 @@ fn draw_settings_button(
             default_text_color
         },
     );
-    ui.add(egui::Button::new(text).min_size(egui::vec2(200.0, 0.0)))
+    ui.add(
+        egui::Button::new(text)
+            .sense(if *active_menu == OxidizeMainpanel::Settings {
+                Sense::FOCUSABLE
+            } else {
+                Sense::CLICK
+            })
+            .min_size(egui::vec2(200.0, 0.0)),
+    )
 }
