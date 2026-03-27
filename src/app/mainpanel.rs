@@ -34,15 +34,10 @@ impl OxidizeMainpanel {
     }
 }
 
-pub fn draw_mainpanel(
-    ctx: &egui::Context,
-    ui: &mut egui::Ui,
-    frame: &mut eframe::Frame,
-    ox_app: &OxidizeApp,
-) {
+pub fn draw_mainpanel(ui: &mut egui::Ui, frame: &mut eframe::Frame, ox_app: &OxidizeApp) {
     match ox_app.mainpanel {
-        OxidizeMainpanel::Dashboard => dashboard::draw_dashboard(ctx, ui, frame, &ox_app.sizes),
-        OxidizeMainpanel::Settings => settings::draw_settings(ctx, ui, frame, &ox_app.sizes),
+        OxidizeMainpanel::Dashboard => dashboard::draw_dashboard(ui, frame, &ox_app.sizes),
+        OxidizeMainpanel::Settings => settings::draw_settings(ui, frame, &ox_app.sizes),
     }
 }
 

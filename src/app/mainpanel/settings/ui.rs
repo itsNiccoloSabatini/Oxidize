@@ -2,12 +2,7 @@ use crate::app::{mainpanel::draw_mainpanel_heading, size::Size};
 use egui::{RichText, Theme, ThemePreference};
 
 const SETTINGS_TITLE: &str = "⚙ Settings";
-pub fn draw_settings(
-    _ctx: &egui::Context,
-    ui: &mut egui::Ui,
-    _frame: &mut eframe::Frame,
-    sizes: &Size,
-) {
+pub fn draw_settings(ui: &mut egui::Ui, _frame: &mut eframe::Frame, sizes: &Size) {
     draw_mainpanel_heading(SETTINGS_TITLE, ui, sizes);
     ui.horizontal(|ui| {
         let theme_text = RichText::new("Oxidize theme: ").size(sizes.text_body_size());
