@@ -3,6 +3,11 @@ mod mainpanel;
 mod sidepanel;
 mod size;
 
+use egui::style::{Selection, WidgetVisuals};
+use egui::{CornerRadius, Stroke};
+
+use crate::Language;
+use crate::app::color::OxidizeThemeColor;
 use crate::app::mainpanel::OxidizeMainpanel;
 use crate::app::sidepanel::draw_side_panel_ui;
 use crate::app::size::Size;
@@ -20,6 +25,12 @@ pub struct OxidizeApp {
     /// This is used to ensure consistent sizing across the application.
     #[serde(skip)]
     pub sizes: Size,
+    /// The current language of the application.
+    /// This is used for internationalization.
+    pub language: Language,
+    /// The current color theme of the application.
+    /// This is used to ensure consistent theming across the application.
+    pub color_theme: OxidizeThemeColor,
 }
 
 impl OxidizeApp {
@@ -36,6 +47,28 @@ impl OxidizeApp {
             Default::default()
         }
     }
+
+    pub fn active_open_widget_visuals(&self) -> WidgetVisuals {
+        WidgetVisuals {
+            bg_fill: self.color_theme.as_egui_c32(),
+            weak_bg_fill: self.color_theme.as_egui_c32(),
+            bg_stroke: Stroke::NONE,
+            corner_radius: CornerRadius::same(2),
+            fg_stroke: self.color_theme.as_egui_stroke(),
+            expansion: 0.0,
+        }
+    }
+
+    pub fn hovered_widget_visuals(&self) -> WidgetVisuals {
+        WidgetVisuals {
+            bg_fill: self.color_theme.as_egui_c32_hover(),
+            weak_bg_fill: self.color_theme.as_egui_c32_hover(),
+            bg_stroke: Stroke::NONE,
+            corner_radius: CornerRadius::same(2),
+            fg_stroke: self.color_theme.as_egui_stroke(),
+            expansion: 0.0,
+        }
+    }
 }
 
 impl eframe::App for OxidizeApp {
@@ -46,8 +79,14 @@ impl eframe::App for OxidizeApp {
 
     /// Called each time the UI needs repainting, which may be many times per second.
     fn ui(&mut self, ui: &mut egui::Ui, _frame: &mut eframe::Frame) {
+        rust_i18n::set_locale(self.language.as_i18n_code());
+
         egui::Panel::top("top_panel").show_inside(ui, |ui| {
             // The top panel is often a good place for a menu bar:
+            ui.visuals_mut().selection = Selection {
+                bg_fill: self.color_theme.as_egui_c32_selection(),
+                stroke: self.color_theme.as_egui_stroke(),
+            };
             egui::MenuBar::new().ui(ui, |ui| {
                 // NOTE: no File->Quit on web pages!
                 let is_web = cfg!(target_arch = "wasm32");
@@ -61,9 +100,7 @@ impl eframe::App for OxidizeApp {
                 }
             });
         });
-
         draw_side_panel_ui(ui, self);
-
         egui::CentralPanel::default().show_inside(ui, |ui| {
             // The central panel the region left after adding TopPanel's and SidePanel's
             mainpanel::draw_mainpanel(ui, _frame, self);
