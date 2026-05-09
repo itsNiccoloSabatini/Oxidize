@@ -22,6 +22,7 @@
     just
     onefetch
     trunk
+    lld
   ];
 
   # https://devenv.sh/git-hooks/
