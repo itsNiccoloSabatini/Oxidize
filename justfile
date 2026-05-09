@@ -1,9 +1,6 @@
 # Oxidize - Justfile
 # Main commands for the Rust task manager project
 
-# Set shell for Windows compatibility
-set shell := ["powershell.exe", "-c"]
-
 # Default recipe: run tests and format code
 default: ci build clippy
 

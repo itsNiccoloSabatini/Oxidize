@@ -11,3 +11,14 @@ target_wasm
 
 # https://github.com/lycheeverse/lychee
 .lycheecache
+
+# Devenv
+.devenv*
+devenv.local.nix
+devenv.local.yaml
+
+# direnv
+.direnv
+
+# pre-commit
+.pre-commit-config.yaml
