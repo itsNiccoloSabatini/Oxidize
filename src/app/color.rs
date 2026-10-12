@@ -65,13 +65,13 @@ impl OxidizeThemeColor {
 
     pub fn as_egui_stroke(&self) -> Stroke {
         match self {
-            Self::IOSBlue => Stroke::new(2.0, Self::IOSBlue.as_egui_c32_dark()),
+            Self::IOSBlue => Stroke::new(2.0_f32, Self::IOSBlue.as_egui_c32_dark()),
             Self::DarkAlternativeBlue => {
-                Stroke::new(2.0, Self::DarkAlternativeBlue.as_egui_c32_dark())
+                Stroke::new(2.0_f32, Self::DarkAlternativeBlue.as_egui_c32_dark())
             }
-            Self::SystemGreen => Stroke::new(2.0, Self::SystemGreen.as_egui_c32_dark()),
-            Self::SystemRed => Stroke::new(2.0, Self::SystemRed.as_egui_c32_dark()),
-            Self::ModernPurple => Stroke::new(2.0, Self::ModernPurple.as_egui_c32_dark()),
+            Self::SystemGreen => Stroke::new(2.0_f32, Self::SystemGreen.as_egui_c32_dark()),
+            Self::SystemRed => Stroke::new(2.0_f32, Self::SystemRed.as_egui_c32_dark()),
+            Self::ModernPurple => Stroke::new(2.0_f32, Self::ModernPurple.as_egui_c32_dark()),
         }
     }
 }

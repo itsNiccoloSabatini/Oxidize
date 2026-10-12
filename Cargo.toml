@@ -13,15 +13,15 @@ targets = ["x86_64-unknown-linux-gnu", "wasm32-unknown-unknown"]
 [dependencies]
 egui = "0.34"
 eframe = { version = "0.34", default-features = false, features = [
-    "accesskit",     # Make egui compatible with screen readers. NOTE: adds a lot of dependencies.
-    "default_fonts", # Embed the default egui fonts.
-    "glow",          # Graphics backend needed for run_native.
-    "persistence",   # Enable restoring app state when restarting the app.
-    "wayland",       # To support Linux (and CI)
-    "x11",           # To support older Linux distributions (restores one of the default features)
+  "accesskit",     # Make egui compatible with screen readers. NOTE: adds a lot of dependencies.
+  "default_fonts", # Embed the default egui fonts.
+  "glow",          # Graphics backend needed for run_native.
+  "persistence",   # Enable restoring app state when restarting the app.
+  "wayland",       # To support Linux (and CI)
+  "x11",           # To support older Linux distributions (restores one of the default features)
 ] }
 log = "0.4.27"
-rust-i18n = "3"  # for internationalization/macros
+rust-i18n = "3" # for internationalization/macros
 
 # You only need serde if you want app persistence:
 serde = { version = "1.0.219", features = ["derive"] }
@@ -52,7 +52,6 @@ opt-level = 3
 # If you fork https://github.com/emilk/egui you can test with:
 # egui = { path = "../egui/crates/egui" }
 # eframe = { path = "../egui/crates/eframe" }
-
 
 
 # ----------------------------------------------------------------------------------------
@@ -97,12 +96,12 @@ cloned_instead_of_copied = "warn"
 dbg_macro = "warn"
 debug_assert_with_mut_call = "warn"
 derive_partial_eq_without_eq = "warn"
-disallowed_macros = "warn"                  # See clippy.toml
-disallowed_methods = "warn"                 # See clippy.toml
-disallowed_names = "warn"                   # See clippy.toml
-disallowed_script_idents = "warn"           # See clippy.toml
-disallowed_types = "warn"                   # See clippy.toml
-doc_include_without_cfg  = "warn"
+disallowed_macros = "warn"                   # See clippy.toml
+disallowed_methods = "warn"                  # See clippy.toml
+disallowed_names = "warn"                    # See clippy.toml
+disallowed_script_idents = "warn"            # See clippy.toml
+disallowed_types = "warn"                    # See clippy.toml
+doc_include_without_cfg = "warn"
 doc_link_with_quotes = "warn"
 doc_markdown = "warn"
 empty_enums = "warn"
@@ -120,7 +119,6 @@ flat_map_option = "warn"
 float_cmp_const = "warn"
 fn_params_excessive_bools = "warn"
 fn_to_numeric_cast_any = "warn"
-from_iter_instead_of_collect = "warn"
 get_unwrap = "warn"
 implicit_clone = "warn"
 imprecise_flops = "warn"
@@ -235,5 +233,5 @@ wildcard_dependencies = "warn"
 wildcard_imports = "warn"
 zero_sized_map_values = "warn"
 
-manual_range_contains = "allow"       # this is better on 'allow'
-map_unwrap_or = "allow"               # this is better on 'allow'
+manual_range_contains = "allow" # this is better on 'allow'
+map_unwrap_or = "allow"         # this is better on 'allow'
